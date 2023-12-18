@@ -13,6 +13,13 @@ jobs:
       - name: Checkout repo
       - uses: actions/checkout@v3
 
+        env:
+          PORT: ${{secrets.PORT}}
+          SECRET: ${{secrets.SECRET}}
+          ADMINNAME: ${{secrets.PASSWORD}}
+          PASSWORD_DB: ${{secrets.PASSWORD_DB}}
+          PORT_DB: ${{secrets.PORT_DB}}
+
       - name: Setup Node.js environment
         uses: actions/setup-node@v4.0.1
         
@@ -27,30 +34,30 @@ jobs:
           cd ./../frontend
           npm i -g live-server
           live-server ./content/Viewer/login.html
-      - name: Run a multi-line script
+          
+      - name: Move to backend and run tests
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          cd ./../backend/selenium_tests
+          node crudTest.js
+
+          exit_code=$?
   
-  backend:
-    runs-on: ubuntu-latest
-    needs:
-      - build
+            if [ $exit_code -ne 0 ]; then
+              echo "Selenium tests failed. Raising a bug "
+                  
+                  - name: GitHub Action to create an Azure DevOps Bug Workitem when a workflow fails
+                    uses: stefanstranger/azuredevops-bug-action@1.1
+                  with:
+                    OrganizationName: ${{secrets.ORGNAME}
+                    PAT: ${{secrets.PAT}}
+                    ProjectName: raise_a_bug
+                    AreaPath: selenium_tests
+                    IterationPath: frontend
+                    GithubToken: ${{secrets.GITHUB_TOKEN}}
 
+            else
+              echo "Selenium tests passed."
+            fi
+
+            
       
-  frontend:
-    runs-on: ubuntu-latest
-    needs:
-      - build
-
-  test:
-    runs-on: ubuntu-latest
-    needs:
-      - backend
-      - frontend
-
-
-  strategy:
-    matrix:
-      os: [ubuntu-latest]
-    
