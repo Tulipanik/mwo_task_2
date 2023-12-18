@@ -33,6 +33,7 @@ jobs:
         run: |
           cd ./../frontend
           npm i -g live-server
+          npm i
           live-server ./content/Viewer/login.html
           
       - name: Move to backend and run tests
