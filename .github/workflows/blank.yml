@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout repo
-      - uses: actions/checkout@v3
+        uses: actions/checkout@v3
 
         env:
           PORT: ${{secrets.PORT}}
@@ -22,7 +22,7 @@ jobs:
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v4.0.1
-        
+
       - name: Move to backend and run
         run: |
           cd ./backend
@@ -40,25 +40,20 @@ jobs:
         run: |
           cd ./../backend/selenium_tests
           node crudTest.js
-
           exit_code=$?
   
-            if [ $exit_code -ne 0 ]; then
-              echo "Selenium tests failed. Raising a bug "
-                  
-                  - name: GitHub Action to create an Azure DevOps Bug Workitem when a workflow fails
-                    uses: stefanstranger/azuredevops-bug-action@1.1
-                  with:
-                    OrganizationName: ${{secrets.ORGNAME}
-                    PAT: ${{secrets.PAT}}
-                    ProjectName: raise_a_bug
-                    AreaPath: selenium_tests
-                    IterationPath: frontend
-                    GithubToken: ${{secrets.GITHUB_TOKEN}}
-
-            else
-              echo "Selenium tests passed."
-            fi
-
+          if [ $exit_code -ne 0 ]; then
+            echo "Selenium tests failed. Raising a bug "
             
-      
+            - name: GitHub Action to create an Azure DevOps Bug Workitem when a workflow fails
+              uses: stefanstranger/azuredevops-bug-action@1.1
+              with:
+                OrganizationName: ${{secrets.ORGNAME}}
+                PAT: ${{secrets.PAT}}
+                ProjectName: raise_a_bug
+                AreaPath: selenium_tests
+                IterationPath: frontend
+                GithubToken: ${{secrets.GITHUB_TOKEN}}
+          else
+            echo "Selenium tests passed."
+          fi
