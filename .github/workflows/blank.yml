@@ -24,21 +24,21 @@ jobs:
         uses: actions/setup-node@v4.0.1
         
       - name: Move to backend and run
+        working-directory: ./backend
         run: |
-          cd ./backend
           npm i 
           node app.js
 
       - name: Run frontend
+        working-directory: ./frontend
         run: |
-          cd ./../frontend
           npm i -g live-server
           npm i
           live-server ./content/Viewer/login.html
           
       - name: Move to backend and run tests
+        working-directory: ./backend
         run: |
-          cd ./../backend/selenium_tests
           node crudTest.js
 
           exit_code=$?
