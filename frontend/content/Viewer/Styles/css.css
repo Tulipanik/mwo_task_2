@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+
+body {
+  height: 100%;
+  color: grey;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  background-color: white;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.25));
+}
+
+h1 {
+  font-size: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+h2 {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+h3 {
+  display: flexbox;
+  font-size: 1.2rem;
+  width: 100%;
+  justify-content: center;
+}
+
+img {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  justify-content: center;
+}
+
+label {
+  font-size: 1.2rem;
+  color: white;
+  padding: 10px;
+}
+
+input {
+  padding: 5px;
+  margin: 10px;
+  background-color: transparent;
+  border: 2px solid white;
+  border-radius: 10px;
+  color: white;
+  width: 90%;
+}
+
+input:focus {
+  border: 2px solid white;
+  box-shadow: none;
+}
+
+table {
+  width: 100%;
+  border: 2px solid white;
+  border-collapse: collapse;
+  justify-content: center;
+}
+
+thead {
+  background-color: #bd2619;
+  color: white;
+}
+
+td {
+  border: 2px solid grey;
+  padding: 10px;
+}
+
+button {
+  display: block;
+  padding: 10px;
+  margin: 10px;
+  background-color: transparent;
+  color: white;
+  border: solid 2px white;
+  border-radius: 10px;
+}
+
+#to_float {
+  display: flex;
+}
+
+#left {
+  height: 100vh;
+  width: 30vw;
+  background-color: #bd2619;
+}
+
+#left h3 {
+  color: white;
+}
+
+#left button:hover {
+  background-color: #6b1c15;
+}
+
+#left div div {
+  background-color: #6b1c15;
+  padding: 5px;
+}
+
+#right {
+  width: 70vw;
+}
+
+#search_menu {
+  display: none;
+}
+
+#control {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+#control button {
+  display: inline-block;
+  background-color: #bd2619;
+}
+
+#addController,
+#getController,
+#deleteController {
+  display: none;
+}
+
+.error {
+  color: #bd2619;
+}
+
+.message {
+  color: green;
+}
+
+#loginContainer {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+#loginForm {
+  background-color: #bd2619;
+  width: 50%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#loginForm input::placeholder,
+#loginForm input[type="submit"],
+#loginForm input[type="text"] {
+  font-size: 30px;
+  color: white;
+}
+
+#loginForm input {
+  height: 50px;
+}

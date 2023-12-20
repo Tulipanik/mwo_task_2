@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./Styles/css.css" />
+    <script src="../../app/lib/angular.min.js"></script>
+    <script type="module" src="../Controller/controlLogin.js"></script>
+    <script type="module" src="../Controller/ControlTable.js"></script>
+    <title>BookApp- login</title>
+  </head>
+  <body ng-app="App" ng-controller="loginController">
+    <div id="loginContainer">
+      <div id="loginForm">
+        <h1>Logowanie</h1>
+        <form ng-submit="login()">
+          <input
+            id="username"
+            ng-model="user.username"
+            type="text"
+            placeholder="login"
+          />
+          <input
+            id="password"
+            ng-model="user.password"
+            type="password"
+            placeholder="hasło"
+          />
+          <input type="submit" value="Zaloguj" id="login" />
+        </form>
+        <button ng-click="register()">Zarejestruj się</button>
+      </div>
+    </div>
+  </body>
+</html>

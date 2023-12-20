@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../../app/lib/angular.min.js"></script>
+    <script type="module" src="../Controller/ControlTable.js"></script>
+    <script type="module" src="../Controller/controlForms.js"></script>
+    <link rel="stylesheet" href="./Styles/css.css" />
+    <title>Books app</title>
+  </head>
+  <body>
+    <h1>Book app</h1>
+    <div id="to_float" ng-controller="visibilityController">
+      <div id="left">
+        <div>
+          <button id="getMenu" ng-click="setVisibility('getController')">
+            Wyszukiwanie
+          </button>
+          <div id="getController" ng-controller="getController">
+            <div class="error" ng-model="error">{{error}}</div>
+            <div>
+              <h3>Get by chosen genre</h3>
+              <form ng-submit="getByGenre()">
+                <label for="genre_find">Gatunek:</label>
+                <input
+                  type="text"
+                  id="genre_find"
+                  ng-model="genreData.genre"
+                  required
+                />
+                <button id="genreFindSubmit" type="submit">Wyszukaj</button>
+              </form>
+            </div>
+            <div id="get_author_form">
+              <h3>Get by chosen author</h3>
+              <form ng-submit="getByAuthor()">
+                <label for="author_find">Autor:</label>
+                <input
+                  type="text"
+                  id="author_find"
+                  ng-model="authorData.author"
+                  required
+                />
+                <button id="authorFindSubmit" type="submit">Wyszukaj</button>
+              </form>
+            </div>
+            <div id="get_id_form">
+              <h3>Get by chosen id</h3>
+              <form ng-submit="getById()">
+                <label for="id_find">Id:</label>
+                <input type="text" id="id_find" ng-model="idData.id" required />
+                <button id="idFindSubmit" type="submit">Wyszukaj</button>
+              </form>
+            </div>
+          </div>
+
+          <button id="editMenu" ng-click="setVisibility('addController')">
+            Menu edycji
+          </button>
+          <div id="addController" ng-controller="addController">
+            <div class="error" ng-model="error">{{error}}</div>
+            <div class="message" ng-model="message">{{message}}</div>
+            <div id="add_form">
+              <h3>Add book</h3>
+              <form id="add" ng-submit="addBook()">
+                <label for="title">Tytuł:</label>
+                <input type="text" id="title" ng-model="bookToAdd.title" />
+                <label for="author">Autor:</label>
+                <input type="text" id="author" ng-model="bookToAdd.author" />
+                <label for="genre">Gatunek:</label>
+                <input type="text" id="genre" ng-model="bookToAdd.genre" />
+                <button type="submit" id="add_submit">Dodaj</button>
+              </form>
+            </div>
+            <div id="update_form">
+              <h3>Update book</h3>
+              <form id="update" ng-submit="updateBook()">
+                <label for="id">Id:</label>
+                <input
+                  type="number"
+                  name="id"
+                  ng-model="bookToUpdate.id"
+                  required
+                />
+                <label for="title">Tytuł:</label>
+                <input
+                  type="text"
+                  name="title"
+                  ng-model="bookToUpdate.title"
+                  required
+                />
+                <label for="author">Autor:</label>
+                <input
+                  type="text"
+                  name="author"
+                  ng-model="bookToUpdate.author"
+                />
+                <label for="genre">Gatunek:</label>
+                <input type="text" name="genre" ng-model="bookToUpdate.genre" />
+                <button id="update_submit" type="submit">Aktualizuj</button>
+              </form>
+            </div>
+          </div>
+          <button id="deleteMenu" ng-click="setVisibility('deleteController')">
+            Delete
+          </button>
+          <div id="deleteController" ng-controller="deleteController">
+            <div class="error" ng-model="error">{{error}}</div>
+            <div class="message" ng-model="message">{{message}}</div>
+            <button id="deleteAll" ng-click="deleteAllBooks()">
+              Usuń wszystkie książki
+            </button>
+            <div id="delete_id_form">
+              <h3>Delete by chosen id</h3>
+              <form ng-submit="deleteById()">
+                <label for="id">Id:</label>
+                <input
+                  type="text"
+                  name="id"
+                  id="id"
+                  ng-model="bookId"
+                  required
+                />
+                <input id="deleteId" type="submit" value="Usuń" />
+              </form>
+            </div>
+            <div id="delete_genre_form">
+              <h3>Delete by chosen genre</h3>
+              <form ng-submit="deleteByGenre()">
+                <label for="genre_delete">Gatunek:</label>
+                <input
+                  type="text"
+                  name="genre"
+                  id="genre_delete"
+                  ng-model="bookGenre"
+                />
+                <button id="deleteGenre" type="submit">Usuń</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="right">
+        <div ng-controller="pageSwappingController" id="control">
+          <button id="previousPage" ng-click="back()"><</button>
+          <button id="nextPage" ng-click="next()">></button>
+        </div>
+        <table ng-controller="tableController">
+          <thead>
+            <td>Id</td>
+            <td>Tytuł</td>
+            <td>Autor</td>
+            <td>Gatunek</td>
+          </thead>
+          <tbody ng-repeat="book in books">
+            <td>{{book.id}}</td>
+            <td>{{book.title}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.genre}}</td>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

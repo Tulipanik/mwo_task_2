@@ -1,0 +1,16 @@
+{
+  "endpoints": {
+    "getAll": "/getAllBooks",
+    "getAllGenre": "/getBookByGenre/:genre",
+    "getAllAuthor": "/getBookByAuthor/:author",
+    "getId": "/getBookById/:id",
+    "add": "/addBook",
+    "update": "/updateBook/:id",
+    "deleteAll": "/deleteAllBooks",
+    "deleteAllId": "/deleteBookById/:id",
+    "deleteAllGenre": "/deleteAllBooksByGenre/:genre",
+    "maxId": "/getMaxId",
+    "login": "/login",
+    "register": "/register"
+  }
+}
