@@ -13,21 +13,23 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-        env:
-          PORT: ${{secrets.PORT}}
-          SECRET: ${{secrets.SECRET}}
-          ADMINNAME: ${{secrets.PASSWORD}}
-          PASSWORD_DB: ${{secrets.PASSWORD_DB}}
-          PORT_DB: ${{secrets.PORT_DB}}
-
       - name: Setup Node.js environment
         uses: actions/setup-node@v4.0.1
+
+      - name: Create .env file
+        working-directory: ./backend
+        run: |
+          echo "PORT=${{secrets.PORT}}" > ./backend/.env
+          echo "SECRET=${{secrets.SECRET}}" >> ./backend/.env
+          echo "ADMINNAME=${{secrets.PASSWORD}}" >> ./backend/.env
+          echo "PASSWORD_DB=${{secrets.PASSWORD_DB}}" >> ./backend/.env
+          echo "PORT_DB=${{secrets.PORT_DB}}" >> ./backend/.env
 
       - name: Move to backend and run
         run: |
           cd ./backend
           npm i 
-          node app.js
+          node app.js &
 
       - name: Run frontend
         run: |
