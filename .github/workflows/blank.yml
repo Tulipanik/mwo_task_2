@@ -27,14 +27,19 @@ jobs:
         working-directory: ./backend
         run: |
           npm i 
-          node app.js
+          node app.js &
 
-      - name: Run frontend
+      - name: Install frontend
         working-directory: ./frontend
         run: |
-          npm i -g live-server
           npm i
-          live-server ./content/Viewer/login.html
+
+      - name: Run frontend
+        working-directory: ./
+        run: |
+          npm init -y
+          npm i -g live-server
+          live-server ./frontend/content/Viewer/login.html
           
       - name: Move to backend and run tests
         working-directory: ./backend
