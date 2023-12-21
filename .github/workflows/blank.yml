@@ -33,7 +33,10 @@ jobs:
 
       - name: Run frontend
         working-directory: ./frontend
-        run: npm i
+        run: |
+          npm i
+          npm install chromedriver@latest
+          npm install selenium-webdriver@latest
 
       - name: start liveserver
         working-directory: ./
