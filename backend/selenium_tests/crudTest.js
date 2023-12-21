@@ -8,6 +8,7 @@ const { updateTests } = require("./updateTests");
 const { deleteTests } = require("./deleteTests");
 
 async function runTests() {
+   let options = new chrome.Options();
   // let driver = await env
   // .builder()
   // .setChromeOptions(options.addArguments('--headless=new'))
