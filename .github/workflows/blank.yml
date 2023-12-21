@@ -40,7 +40,7 @@ jobs:
         run: |
           npm init -y
           npm i -g live-server
-          live-server ./frontend/content/Viewer/login.html &
+          live-server ./frontend/content/Viewer/login.html --port=8081 &
           
       - name: Move to backend and run tests
         working-directory: ./backend/selenium_tests
