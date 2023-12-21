@@ -18,14 +18,21 @@ jobs:
 
       - name: Create .env file
         working-directory: ./backend
-        run: |
-          echo "PORT=${{secrets.PORT}}" >> ./.env
-          echo "SECRET=${{secrets.SECRET}}" >> ./.env
-          echo "ADMINNAME=${{secrets.PASSWORD}}" >> ./.env
-          echo "PASSWORD_DB=${{secrets.PASSWORD_DB}}" >> ./.env
-          echo "PORT_DB=${{secrets.PORT_DB}}" >> ./.env
+        # run: |
+        #   echo "PORT=${{secrets.PORT}}" >> ./.env
+        #   echo "SECRET=${{secrets.SECRET}}" >> ./.env
+        #   echo "ADMINNAME=${{secrets.PASSWORD}}" >> ./.env
+        #   echo "PASSWORD_DB=${{secrets.PASSWORD_DB}}" >> ./.env
+        #   echo "PORT_DB=${{secrets.PORT_DB}}" >> ./.env
 
-          cat .env
+        #   cat .env
+
+        env:
+          PORT: ${{ secrets.PORT }}
+          SECRET: ${{ secrets.SECRET }}
+          ADMINNAME: ${{ secrets.PASSWORD }}
+          PASSWORD_DB: ${{ secrets.PASSWORD_DB }}
+          PORT_DB: ${{ secrets.PORT_DB }}
 
       - name: Move to backend and run
         working-directory: ./backend
