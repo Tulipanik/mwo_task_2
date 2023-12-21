@@ -30,7 +30,7 @@ jobs:
         env:
           PORT: ${{ secrets.PORT }}
           SECRET: ${{ secrets.SECRET }}
-          ADMINNAME: ${{ secrets.PASSWORD }}
+          ADMINNAME: ${{ secrets.ADMINNAME }}
           PASSWORD: ${{ secrets.PASSWORD }}
           PASSWORD_DB: ${{ secrets.PASSWORD_DB }}
           PORT_DB: ${{ secrets.PORT_DB }}
