@@ -25,6 +25,8 @@ jobs:
           echo "PASSWORD_DB=${{secrets.PASSWORD_DB}}" >> ./.env
           echo "PORT_DB=${{secrets.PORT_DB}}" >> ./.env
 
+          cat .env
+
       - name: Move to backend and run
         working-directory: ./backend
         run: |
