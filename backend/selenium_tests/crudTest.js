@@ -8,11 +8,11 @@ const { updateTests } = require("./updateTests");
 const { deleteTests } = require("./deleteTests");
 
 async function runTests() {
-  let driver = await env
-  .builder()
-  .setChromeOptions(options.addArguments('--headless=new'))
-  .build();
-  //let driver = await new Builder().forBrowser("chrome").build();
+  // let driver = await env
+  // .builder()
+  // .setChromeOptions(options.addArguments('--headless=new'))
+  // .build();
+  let driver = await new Builder().forBrowser("chrome").setChromeOptions(options.addArguments('--headless')).build();
 
   try {
     await driver.get(
