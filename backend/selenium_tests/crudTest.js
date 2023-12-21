@@ -18,7 +18,7 @@ async function runTests() {
 
   try {
     await driver.get(
-      "http://127.0.0.1:8080/frontend/content/Viewer/login.html"
+      "http://127.0.0.1:8081/frontend/content/Viewer/login.html"
     );
 
     await login(driver);
