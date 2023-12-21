@@ -1,4 +1,5 @@
 const { Builder, By, Key, until } = require("selenium-webdriver");
+const chrome = require("selenium-webdriver/chrome")
 const dotenv = require("dotenv");
 dotenv.config({ path: "./../.env" });
 require("chromedriver");
