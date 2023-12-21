@@ -12,7 +12,7 @@ async function runTests() {
   .builder()
   .setChromeOptions(options.addArguments('--headless=new'))
   .build();
-  let driver = await new Builder().forBrowser("chrome").build();
+  //let driver = await new Builder().forBrowser("chrome").build();
 
   try {
     await driver.get(
